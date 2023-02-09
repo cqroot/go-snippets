@@ -1,5 +1,3 @@
-// Copy file
-
 package main
 
 import (
@@ -9,12 +7,12 @@ import (
 )
 
 func CopyFile(src, dst string) (int64, error) {
-	srcFileStat, err := os.Stat(src)
+	srcFileInfo, err := os.Stat(src)
 	if err != nil {
 		return 0, err
 	}
 
-	if !srcFileStat.Mode().IsRegular() {
+	if !srcFileInfo.Mode().IsRegular() {
 		return 0, fmt.Errorf("%s is not a regular file", src)
 	}
 
@@ -29,6 +27,7 @@ func CopyFile(src, dst string) (int64, error) {
 		return 0, err
 	}
 	defer destination.Close()
+
 	nBytes, err := io.Copy(destination, source)
 	return nBytes, err
 }
