@@ -5,10 +5,17 @@ import (
 	"os"
 )
 
-func main() {
-	file, err := os.Create("testfile")
+func WriteFile1() {
+	err := os.WriteFile("testfile1", []byte("This is a test file\n"), 0666)
 	if err != nil {
-		return
+		panic(err)
+	}
+}
+
+func WriteFile2() {
+	file, err := os.Create("testfile2")
+	if err != nil {
+		panic(err)
 	}
 	defer file.Close()
 
@@ -27,4 +34,9 @@ func main() {
 	}
 	// output: wrote 20 bytes
 	fmt.Printf("wrote %d bytes\n", nBytes)
+}
+
+func main() {
+	WriteFile1()
+	WriteFile2()
 }
