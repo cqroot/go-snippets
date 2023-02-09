@@ -29,9 +29,9 @@ func main() {
 		snippets = append(snippets, file.Name())
 	}
 
-	tmpl, err := template.New("README.tmpl.md").
+	tmpl, err := template.New("template.md").
 		Funcs(FuncMap()).
-		ParseFiles("README.tmpl.md")
+		ParseFiles("template.md")
 	if err != nil {
 		panic(err)
 	}
