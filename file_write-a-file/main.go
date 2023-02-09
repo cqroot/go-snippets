@@ -24,7 +24,7 @@ func WriteFile2() {
 	if err != nil {
 		panic(err)
 	}
-	// output: wrote 20 bytes
+	// Output: wrote 20 bytes
 	fmt.Printf("wrote %d bytes\n", nBytes)
 
 	// Write []byte
@@ -32,7 +32,7 @@ func WriteFile2() {
 	if err != nil {
 		panic(err)
 	}
-	// output: wrote 20 bytes
+	// Output: wrote 20 bytes
 	fmt.Printf("wrote %d bytes\n", nBytes)
 }
 
