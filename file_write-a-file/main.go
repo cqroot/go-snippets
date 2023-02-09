@@ -17,6 +17,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	// output: wrote 20 bytes
 	fmt.Printf("wrote %d bytes\n", nBytes)
 
 	// Write []byte
@@ -24,5 +25,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	// output: wrote 20 bytes
 	fmt.Printf("wrote %d bytes\n", nBytes)
 }
