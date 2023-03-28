@@ -15,7 +15,7 @@ type Snippet struct {
 }
 
 func Snippets() []Snippet {
-	files, err := os.ReadDir("./")
+	files, err := os.ReadDir("./snippets")
 	if err != nil {
 		panic(err)
 	}

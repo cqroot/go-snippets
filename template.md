@@ -6,5 +6,5 @@
 | --- | ---- | ----- |
 
 {{- range $index, $snippet := . }}
-| {{ add $index 1 }} | {{ ToUpper $snippet.Typ }} | [{{ Title $snippet.Title }}](https://github.com/cqroot/go-snippets/tree/main/{{ $snippet.Title }}/main.go) |
+| {{ add $index 1 }} | {{ ToUpper $snippet.Typ }} | [{{ Title $snippet.Title }}](https://github.com/cqroot/go-snippets/tree/main/snippets/{{ $snippet.Typ }}-{{ $snippet.Title }}/main.go) |
 {{- end }}
