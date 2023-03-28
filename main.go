@@ -9,13 +9,18 @@ import (
 	"golang.org/x/text/language"
 )
 
-func main() {
+type Snippet struct {
+	Typ   string
+	Title string
+}
+
+func Snippets() []Snippet {
 	files, err := os.ReadDir("./")
 	if err != nil {
 		panic(err)
 	}
 
-	snippets := make([]string, 0)
+	snippets := make([]Snippet, 0)
 
 	for _, file := range files {
 		if !file.IsDir() {
@@ -26,8 +31,21 @@ func main() {
 			continue
 		}
 
-		snippets = append(snippets, file.Name())
+		if !strings.Contains(file.Name(), "-") {
+			continue
+		}
+
+		snippets = append(snippets, Snippet{
+			Typ:   strings.Split(file.Name(), "-")[0],
+			Title: strings.Split(file.Name(), "-")[1],
+		})
 	}
+
+	return snippets
+}
+
+func main() {
+	snippets := Snippets()
 
 	tmpl, err := template.New("template.md").
 		Funcs(FuncMap()).
@@ -53,12 +71,11 @@ func FuncMap() template.FuncMap {
 		"add": func(i int, j int) int {
 			return i + j
 		},
-		"name": func(snippet string) string {
-			parts := strings.Split(snippet, "_")
-			if len(parts) < 2 {
-				return snippet
-			}
-			name := strings.Replace(parts[1], "-", " ", -1)
+		"ToUpper": func(s string) string {
+			return strings.ToUpper(s)
+		},
+		"Title": func(s string) string {
+			name := strings.ReplaceAll(s, "_", " ")
 			return cases.Title(language.English, cases.Compact).String(name)
 		},
 	}
