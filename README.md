@@ -22,4 +22,4 @@
 
 | #   | Type | Title |
 | --- | ---- | ----- |
-| 1 | Creational Patterns | [Singleton](https://github.com/cqroot/go-patterns/tree/main/patterns/creational-singleton) |
+| 1 | Creational Patterns | [Singleton](https://github.com/cqroot/go-snippets/tree/main/design-patterns/creational-singleton) |

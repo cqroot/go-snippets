@@ -17,5 +17,5 @@
 | --- | ---- | ----- |
 
 {{- range $index, $pattern := .Patterns }}
-| {{ add $index 1 }} | {{ Title $pattern.Typ }} Patterns | [{{ Title $pattern.Title }}](https://github.com/cqroot/go-patterns/tree/main/patterns/{{ $pattern.Typ }}-{{ $pattern.Title }}) |
+| {{ add $index 1 }} | {{ Title $pattern.Typ }} Patterns | [{{ Title $pattern.Title }}](https://github.com/cqroot/go-snippets/tree/main/design-patterns/{{ $pattern.Typ }}-{{ $pattern.Title }}) |
 {{- end }}
