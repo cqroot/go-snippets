@@ -14,6 +14,16 @@ type Snippet struct {
 	Title string
 }
 
+type Pattern struct {
+	Typ   string
+	Title string
+}
+
+type Data struct {
+	Snippets []Snippet
+	Patterns []Pattern
+}
+
 func Snippets() []Snippet {
 	files, err := os.ReadDir("./snippets")
 	if err != nil {
@@ -44,9 +54,37 @@ func Snippets() []Snippet {
 	return snippets
 }
 
-func main() {
-	snippets := Snippets()
+func Patterns() []Pattern {
+	files, err := os.ReadDir("./design-patterns")
+	if err != nil {
+		panic(err)
+	}
 
+	patterns := make([]Pattern, 0)
+
+	for _, file := range files {
+		if !file.IsDir() {
+			continue
+		}
+
+		if strings.HasPrefix(file.Name(), ".") {
+			continue
+		}
+
+		if !strings.Contains(file.Name(), "-") {
+			continue
+		}
+
+		patterns = append(patterns, Pattern{
+			Typ:   strings.Split(file.Name(), "-")[0],
+			Title: strings.Split(file.Name(), "-")[1],
+		})
+	}
+
+	return patterns
+}
+
+func main() {
 	tmpl, err := template.New("template.md").
 		Funcs(FuncMap()).
 		ParseFiles("template.md")
@@ -60,7 +98,10 @@ func main() {
 	}
 	defer fOutput.Close()
 
-	err = tmpl.Execute(fOutput, snippets)
+	err = tmpl.Execute(fOutput, Data{
+		Snippets: Snippets(),
+		Patterns: Patterns(),
+	})
 	if err != nil {
 		panic(err)
 	}
