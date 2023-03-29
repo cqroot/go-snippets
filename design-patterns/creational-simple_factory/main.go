@@ -7,12 +7,12 @@ import (
 func main() {
 	var s storage.Storage
 
-	for _, typ := range []storage.StorageType{
-		storage.DiskStorageType,
-		storage.MemoryStorageType,
-		storage.CloudStorageType,
-	} {
-		s = storage.New(typ)
-		s.Write("test")
-	}
+	s = storage.New(storage.DiskStorageType)
+	s.Write("test")
+
+	s = storage.New(storage.MemoryStorageType)
+	s.Write("test")
+
+	s = storage.New(storage.CloudStorageType)
+	s.Write("test")
 }
