@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 
+	. "github.com/cqroot/go-snippets"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )
@@ -26,9 +27,7 @@ type Data struct {
 
 func Snippets() []Snippet {
 	files, err := os.ReadDir("./snippets")
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 
 	snippets := make([]Snippet, 0)
 
@@ -56,9 +55,7 @@ func Snippets() []Snippet {
 
 func Patterns() []Pattern {
 	files, err := os.ReadDir("./design-patterns")
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 
 	patterns := make([]Pattern, 0)
 
@@ -88,23 +85,17 @@ func main() {
 	tmpl, err := template.New("template.md").
 		Funcs(FuncMap()).
 		ParseFiles("template.md")
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 
 	fOutput, err := os.OpenFile("README.md", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0o666)
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 	defer fOutput.Close()
 
 	err = tmpl.Execute(fOutput, Data{
 		Snippets: Snippets(),
 		Patterns: Patterns(),
 	})
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 }
 
 func FuncMap() template.FuncMap {
