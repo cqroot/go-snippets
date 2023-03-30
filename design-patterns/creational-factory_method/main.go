@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-snippets/design-patterns/creational-factory_method/storage"
+	"github.com/cqroot/go-snippets/design-patterns/creational-factory_method/storage"
 )
 
 func main() {

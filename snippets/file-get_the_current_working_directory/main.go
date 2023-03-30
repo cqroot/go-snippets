@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 	"os"
+
+	. "github.com/cqroot/go-snippets"
 )
 
 func main() {
 	cwd, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 
 	fmt.Println(cwd)
 }

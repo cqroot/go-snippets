@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"os"
+
+	. "github.com/cqroot/go-snippets"
 )
 
 func main() {
@@ -12,11 +14,9 @@ func main() {
 	if _, err := os.Stat(path); err != nil {
 		if errors.Is(err, os.ErrNotExist) {
 			err := os.Mkdir(path, os.ModePerm)
-			if err != nil {
-				panic(err)
-			}
+			CheckErr(err)
 		} else {
-			panic(err)
+			CheckErr(err)
 		}
 	}
 }

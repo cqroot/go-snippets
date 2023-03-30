@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"go-snippets/design-patterns/creational-singleton/singleton"
 	"sync"
+
+	"github.com/cqroot/go-snippets/design-patterns/creational-singleton/singleton"
 )
 
 func main() {

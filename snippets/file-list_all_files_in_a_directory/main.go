@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+
+	. "github.com/cqroot/go-snippets"
 )
 
 func main() {
 	err := filepath.Walk("../", func(name string, info os.FileInfo, err error) error {
-		if err != nil {
-			panic(err)
-		}
+		CheckErr(err)
 
 		if info.IsDir() {
 			return nil
@@ -19,7 +19,5 @@ func main() {
 		fmt.Println(name)
 		return nil
 	})
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 }

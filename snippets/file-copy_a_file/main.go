@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	. "github.com/cqroot/go-snippets"
 )
 
 func CopyFile(src, dst string) (int64, error) {
@@ -34,9 +36,7 @@ func CopyFile(src, dst string) (int64, error) {
 
 func main() {
 	nBytes, err := CopyFile("./main.go", "testfile")
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 
 	// This value is equal to the value output by `du -b main.go`.
 	fmt.Println(nBytes)

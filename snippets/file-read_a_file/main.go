@@ -3,16 +3,13 @@ package main
 import (
 	"fmt"
 	"os"
+
+	. "github.com/cqroot/go-snippets"
 )
 
-func ReadFile(name string) {
-	content, err := os.ReadFile(name)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(string(content))
-}
-
 func main() {
-	ReadFile("./main.go")
+	content, err := os.ReadFile("./main.go")
+	CheckErr(err)
+
+	fmt.Println(string(content))
 }

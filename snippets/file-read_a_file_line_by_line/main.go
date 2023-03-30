@@ -4,13 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+
+	. "github.com/cqroot/go-snippets"
 )
 
-func ReadFile(name string) {
-	file, err := os.Open(name)
-	if err != nil {
-		panic(err)
-	}
+func main() {
+	file, err := os.Open("./main.go")
+	CheckErr(err)
 	defer file.Close()
 
 	fileScanner := bufio.NewScanner(file)
@@ -19,8 +19,4 @@ func ReadFile(name string) {
 	for fileScanner.Scan() {
 		fmt.Println("line:", fileScanner.Text())
 	}
-}
-
-func main() {
-	ReadFile("./main.go")
 }
