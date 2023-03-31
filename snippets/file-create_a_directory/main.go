@@ -7,16 +7,18 @@ import (
 	. "github.com/cqroot/go-snippets"
 )
 
-func main() {
-	path := "./testdir"
-
+func CreateDir(dir string) error {
 	// Check for the directory’s existence first.
-	if _, err := os.Stat(path); err != nil {
-		if errors.Is(err, os.ErrNotExist) {
-			err := os.Mkdir(path, os.ModePerm)
-			CheckErr(err)
-		} else {
-			CheckErr(err)
-		}
+	_, err := os.Stat(dir)
+
+	if errors.Is(err, os.ErrNotExist) {
+		err := os.Mkdir(dir, os.ModePerm)
+		return err
 	}
+
+	return err
+}
+
+func main() {
+	CheckErr(CreateDir("./testdir"))
 }
