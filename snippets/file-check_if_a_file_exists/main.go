@@ -5,8 +5,8 @@ import (
 	"os"
 )
 
-func fileExists(filename string) bool {
-	_, err := os.Stat(filename)
+func fileExists(name string) bool {
+	_, err := os.Stat(name)
 	return !os.IsNotExist(err)
 }
 

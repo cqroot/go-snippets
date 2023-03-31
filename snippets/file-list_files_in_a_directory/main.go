@@ -8,10 +8,10 @@ import (
 )
 
 func main() {
-	files, err := os.ReadDir("../")
+	entries, err := os.ReadDir("../")
 	CheckErr(err)
 
-	for _, file := range files {
-		fmt.Println(file.Name(), file.IsDir())
+	for _, entry := range entries {
+		fmt.Println(entry.Name(), entry.IsDir())
 	}
 }
