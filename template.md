@@ -8,7 +8,7 @@
 | --- | ---- | ----- |
 
 {{- range $index, $snippet := .Snippets }}
-| {{ add $index 1 }} | {{ Title $snippet.Typ }} | [{{ Title $snippet.Title }}](https://github.com/cqroot/go-snippets/tree/main/snippets/{{ $snippet.Typ }}-{{ $snippet.Title }}/main.go) |
+| {{ add $index 1 }} | {{ Title $snippet.Typ }} | [{{ Title $snippet.Title }}](https://github.com/cqroot/go-snippets/tree/main/snippets/{{ $snippet.Typ }}-{{ $snippet.Title }}) |
 {{- end }}
 
 ## Design Patterns
